@@ -18,6 +18,7 @@
             <ImageView
                 android:id="@+id/iv_product"
                 android:layout_width="180dp"
+                android:scaleType="centerCrop"
                 android:layout_height="110dp"
                 android:src="@drawable/banana" />
 
@@ -28,6 +29,7 @@
                 android:layout_below="@id/iv_product"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_centerInParent="true"
                 android:layout_marginBottom="5dp"
                 android:maxLines="1"
                 android:text="Organic Banana (each)"
@@ -40,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_product_name"
                 android:layout_centerHorizontal="false"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="17dp"
                 android:gravity="center"
                 android:text="$15.00"
                 android:textColor="#2be01f"
