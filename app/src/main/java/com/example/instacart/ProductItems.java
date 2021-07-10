@@ -14,10 +14,11 @@ public class ProductItems {
         this.nameProduct = mNameProduct;
         this.priceProduct = mPriceProduct;
     }
-//    public ProductItems(int mImageResourceAllCategories , String mAllCategoriesName) {
-//        this.imageResourceAllCategories = mImageResourceAllCategories;
-//        this.allCategoriesName = mAllCategoriesName;
-//    }
+
+    public ProductItems(int mImageResourceAllCategories, String mAllCategoriesName) {
+        this.imageResourceAllCategories = mImageResourceAllCategories;
+        this.allCategoriesName = mAllCategoriesName;
+    }
 
     public int getImageResourceProduct() {
         return imageResourceProduct;
@@ -31,11 +32,11 @@ public class ProductItems {
         return priceProduct;
     }
 
-//    public int getImageResourceAllCategories() {
-//        return imageResourceAllCategories;
-//    }
-//
-//    public String getAllCategoriesName() {
-//        return allCategoriesName;
-//    }
+    public int getImageResourceAllCategory() {
+        return imageResourceAllCategories;
+    }
+
+    public String getAllCategoryName() {
+        return allCategoriesName;
+    }
 }

@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 
-    android:layout_margin="2dp">
+    android:layout_margin="8dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -16,35 +16,24 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_product"
-                android:layout_width="130dp"
-                android:layout_height="90dp"
+                android:id="@+id/iv_category"
+                android:layout_width="60dp"
+                android:layout_height="75dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/banana" />
+                android:src="@drawable/milk" />
 
             <TextView
-                android:id="@+id/tv_product_name"
+                android:id="@+id/tv_category_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/iv_product"
-                android:layout_centerInParent="false"
+                android:layout_below="@id/iv_category"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:maxLines="1"
                 android:text="Organic Banana (each)"
                 android:textColor="@color/black"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/tv_product_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_product_name"
-                android:layout_marginLeft="3dp"
-                android:gravity="start"
-                android:text="$15.00"
-                android:textColor="#2be01f"
                 android:textSize="12dp" />
 
 

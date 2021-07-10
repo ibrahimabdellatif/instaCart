@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewAllCategories;
     private RecyclerView.LayoutManager layoutManager;
     private ProductAdapter adapter;
+    private CategoryAdapter categoryAdapter;
     private ArrayList<ProductItems> productList = new ArrayList<>();
     private ArrayList<ProductItems> allCategoriesList = new ArrayList<>();
     private Button btnViewMoreFreshProduct;
@@ -100,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewAllCategories = findViewById(R.id.rv_all_categories);
         recyclerViewAllCategories.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
-        adapter = new ProductAdapter(allCategoriesList);
+        categoryAdapter = new CategoryAdapter((allCategoriesList));
         recyclerViewAllCategories.setLayoutManager(layoutManager);
-        adapter.setOnItemClickLister(new ProductAdapter.OnProductListener() {
+        categoryAdapter.setOnItemClickLister(new CategoryAdapter.OnCategoryListener() {
             @Override
-            public void onProductClick(ProductItems productItems) {
-                Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
+            public void onCategoryClick(ProductItems productItems) {
+                Toast.makeText(MainActivity.this, productItems.getAllCategoryName(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -117,14 +118,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        recyclerViewAllCategories.setAdapter(adapter);
+        recyclerViewAllCategories.setAdapter(categoryAdapter);
     }
 
     public void createAllCategories() {
-        allCategoriesList.add(new ProductItems(R.drawable.milk, "Drink", ""));
-        allCategoriesList.add(new ProductItems(R.drawable.vegetable, "Vegetables", ""));
-        allCategoriesList.add(new ProductItems(R.drawable.fruits, "Fruits", ""));
-        allCategoriesList.add(new ProductItems(R.drawable.bread, "Bakery", ""));
+        allCategoriesList.add(new ProductItems(R.drawable.milk, "Drink"));
+        allCategoriesList.add(new ProductItems(R.drawable.vegetable, "Vegetables"));
+        allCategoriesList.add(new ProductItems(R.drawable.fruits, "Fruits"));
+        allCategoriesList.add(new ProductItems(R.drawable.bread, "Bakery"));
+        allCategoriesList.add(new ProductItems(R.drawable.milk, "Drink"));
+        allCategoriesList.add(new ProductItems(R.drawable.vegetable, "Vegetables"));
+        allCategoriesList.add(new ProductItems(R.drawable.fruits, "Fruits"));
+        allCategoriesList.add(new ProductItems(R.drawable.bread, "Bakery"));
     }
 
 
