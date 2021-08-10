@@ -60,7 +60,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.ivProduct.setImageResource(currentItem.getImageResourceProduct());
         holder.tvProductName.setText(currentItem.getNameProduct());
         holder.tvProductPrice.setText(currentItem.getPriceProduct());
-
     }
 
     @Override

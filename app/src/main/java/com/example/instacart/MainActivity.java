@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String EXTRA_productName = "productName";
+    public static final String EXTRA_productPrice = "productPrice";
+    public static final String EXTRA_imageId = "imageResource";
+
     private RecyclerView recyclerViewSnacks;
     private RecyclerView recyclerViewFreshProduct;
     private RecyclerView recyclerViewAllCategories;
@@ -58,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickLister(new ProductAdapter.OnProductListener() {
             @Override
             public void onProductClick(ProductItems productItems) {
+
+                Intent intent = new Intent(MainActivity.this, ItemDetailsActivity.class);
+                intent.putExtra(EXTRA_productName, productItems.getNameProduct());
+                intent.putExtra(EXTRA_productPrice, productItems.getPriceProduct());
+                intent.putExtra(EXTRA_imageId, productItems.getImageResourceProduct());
+                startActivity(intent);
                 Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -82,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickLister(new ProductAdapter.OnProductListener() {
             @Override
             public void onProductClick(ProductItems productItems) {
+                Intent intent = new Intent(MainActivity.this, ItemDetailsActivity.class);
+                intent.putExtra(EXTRA_productName, productItems.getNameProduct());
+                intent.putExtra(EXTRA_productPrice, productItems.getPriceProduct());
+                intent.putExtra(EXTRA_imageId, productItems.getImageResourceProduct());
+                startActivity(intent);
                 Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
             }
         });

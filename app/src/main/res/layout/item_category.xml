@@ -9,6 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="14dp"
         app:cardElevation="1dp">
 
         <RelativeLayout
@@ -17,8 +18,9 @@
 
             <ImageView
                 android:id="@+id/iv_category"
-                android:layout_width="60dp"
-                android:layout_height="75dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:padding="9dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/milk" />
 
@@ -34,7 +36,7 @@
                 android:maxLines="1"
                 android:text="Organic Banana (each)"
                 android:textColor="@color/black"
-                android:textSize="12dp" />
+                android:textSize="9sp" />
 
 
         </RelativeLayout>
