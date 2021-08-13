@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 import static com.example.instacart.MainActivity.EXTRA_imageId;
 import static com.example.instacart.MainActivity.EXTRA_productName;
 import static com.example.instacart.MainActivity.EXTRA_productPrice;
@@ -18,7 +16,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private CartAdapter adapter;
-    private ArrayList<ProductItems> productList = new ArrayList<>();
+    private ItemDetailsActivity items = new ItemDetailsActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +25,8 @@ public class CartActivity extends AppCompatActivity {
 
 //        Intent intent = new Intent(CartActivity.this, ItemDetailsActivity.class);
 //        startActivityForResult(intent, 1);
-        productList.add(new ProductItems(R.drawable.avocado, "apple", "12"));
+//        productList.add(new ProductItems(R.drawable.avocado, "apple", "12"));
+
         setRecyclerView();
 
     }
@@ -36,7 +35,7 @@ public class CartActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_cart);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
-        adapter = new CartAdapter(productList);
+        adapter = new CartAdapter(items.productItemsCart);
         recyclerView.setLayoutManager(layoutManager);
         adapter.setOnItemClickLister(new CartAdapter.OnProductListener() {
             @Override

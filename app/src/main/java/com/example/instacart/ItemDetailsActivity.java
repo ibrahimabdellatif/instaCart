@@ -11,13 +11,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 import static com.example.instacart.MainActivity.EXTRA_imageId;
 import static com.example.instacart.MainActivity.EXTRA_productName;
 import static com.example.instacart.MainActivity.EXTRA_productPrice;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 
-    private ProductItems productItems;
+    public ArrayList<ProductItems> productItemsCart = new ArrayList<>();
     private int imageResource;
     private String productName;
     private String productPrice;
@@ -104,6 +106,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
         data.putExtra(extra_productName, productName);
         data.putExtra(extra_productPrice, productPrice);
 
+
+        if (productItemsCart == null) {
+            Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
+        } else {
+            productItemsCart.add(new ProductItems(data.getIntExtra("", imageResource), productName, productPrice));
+
+        }
         int id = getIntent().getIntExtra(extra_id, -1);
         if (id != -1) {
             data.putExtra(extra_id, id);
