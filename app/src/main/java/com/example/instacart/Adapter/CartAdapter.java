@@ -1,4 +1,4 @@
-package com.example.instacart;
+package com.example.instacart.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.instacart.ProductItems;
+import com.example.instacart.R;
+
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHolder> {
@@ -18,15 +21,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView ivCart;
-        public TextView tvCartProductName;
-        public TextView tvCartProductPrice;
+        public ImageView ivProduct;
+        public TextView tvProductName;
+        public TextView tvProductPrice;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivCart = itemView.findViewById(R.id.iv_cart);
-            tvCartProductName = itemView.findViewById(R.id.tv_cart_product_name);
-            tvCartProductPrice = itemView.findViewById(R.id.tv_cart_product_price);
+            ivProduct = itemView.findViewById(R.id.iv_cart);
+            tvProductName = itemView.findViewById(R.id.tv_cart_product_name);
+            tvProductPrice = itemView.findViewById(R.id.tv_cart_product_price);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -39,6 +42,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
             });
         }
     }
+
 
     public CartAdapter(ArrayList<ProductItems> productItemsList) {
         mProductItemsList = productItemsList;
@@ -56,9 +60,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductItems currentItem = mProductItemsList.get(position);
-        holder.ivCart.setImageResource(currentItem.getImageResourceProduct());
-        holder.tvCartProductName.setText(currentItem.getNameProduct());
-        holder.tvCartProductPrice.setText(currentItem.getPriceProduct());
+        holder.ivProduct.setImageResource(currentItem.getImageResourceProduct());
+        holder.tvProductName.setText(currentItem.getNameProduct());
+        holder.tvProductPrice.setText(currentItem.getPriceProduct());
     }
 
     @Override

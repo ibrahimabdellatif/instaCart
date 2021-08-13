@@ -14,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.instacart.Adapter.CategoryAdapter;
+import com.example.instacart.Adapter.ProductAdapter;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

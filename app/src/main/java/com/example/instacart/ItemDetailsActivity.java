@@ -89,8 +89,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addToCart();
+//                addToCart();
 //                finish();
+                Toast.makeText(ItemDetailsActivity.this, "Add To Cart", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -122,5 +123,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     }
 
+    public void btnAddToCartTest() {
 
+    }
 }

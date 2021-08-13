@@ -1,4 +1,4 @@
-package com.example.instacart;
+package com.example.instacart.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.instacart.ProductItems;
+import com.example.instacart.R;
 
 import java.util.ArrayList;
 

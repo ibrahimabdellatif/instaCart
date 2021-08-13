@@ -1,53 +1,70 @@
 package com.example.instacart;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.instacart.MainActivity.EXTRA_imageId;
-import static com.example.instacart.MainActivity.EXTRA_productName;
-import static com.example.instacart.MainActivity.EXTRA_productPrice;
+import com.example.instacart.Adapter.CartAdapter;
+
+import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private CartAdapter adapter;
-    private ItemDetailsActivity items = new ItemDetailsActivity();
+    private Button btnCheckout;
+    private ArrayList<ProductItems> productList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-//        Intent intent = new Intent(CartActivity.this, ItemDetailsActivity.class);
-//        startActivityForResult(intent, 1);
-//        productList.add(new ProductItems(R.drawable.avocado, "apple", "12"));
 
+        cartItemWithFakeData();
         setRecyclerView();
+        setBtnCheckout();
 
     }
 
-    public void setRecyclerView() {
-        recyclerView = findViewById(R.id.rv_cart);
+    private void setRecyclerView() {
+        recyclerView = (RecyclerView) findViewById(R.id.rv_cart);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
-        adapter = new CartAdapter(items.productItemsCart);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        adapter = new CartAdapter(productList);
         adapter.setOnItemClickLister(new CartAdapter.OnProductListener() {
             @Override
             public void onProductClick(ProductItems productItems) {
-                Intent intent = new Intent(CartActivity.this, ItemDetailsActivity.class);
-                intent.putExtra(EXTRA_productName, productItems.getNameProduct());
-                intent.putExtra(EXTRA_productPrice, productItems.getPriceProduct());
-                intent.putExtra(EXTRA_imageId, productItems.getImageResourceProduct());
-                //intent.putExtra(EXTRA_counterItem , itemDetailsActivity.counterItem);
-                startActivity(intent);
-                Toast.makeText(CartActivity.this, productItems.getPriceProduct(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        recyclerView.setAdapter(adapter);
+
+
+    }
+
+    private void cartItemWithFakeData() {
+        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", "$16.56"));
+        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", "$15.00"));
+        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", "$23.65"));
+        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", "$20.65"));
+
+    }
+
+    private void setBtnCheckout() {
+        btnCheckout = findViewById(R.id.btn_checkout);
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CartActivity.this, "checkout is successful", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
