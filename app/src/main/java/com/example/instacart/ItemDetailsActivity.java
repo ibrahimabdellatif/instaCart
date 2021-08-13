@@ -10,8 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
-import java.util.ArrayList;
+import com.example.instacart.db.ProductViewModel;
 
 import static com.example.instacart.MainActivity.EXTRA_imageId;
 import static com.example.instacart.MainActivity.EXTRA_productName;
@@ -19,15 +20,10 @@ import static com.example.instacart.MainActivity.EXTRA_productPrice;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 
-    public ArrayList<ProductItems> productItemsCart = new ArrayList<>();
     private int imageResource;
     private String productName;
     private String productPrice;
-    public static final String extra_productName = "cartProductName";
-    public static final String extra_productPrice = "cartProductPrice";
-    public static final String extra_imageId = "cartImageResource";
-    public static final String extra_id = "EXTRA_ID";
-
+    public ProductViewModel productViewModel;
 
     private Button btnPlus;
     private Button btnMinim;
@@ -49,15 +45,19 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
 
     public void initiateValues() {
+        //this is our data that we will send it to room and show it in shopping cart
         Intent intent = getIntent();
         imageResource = intent.getIntExtra(EXTRA_imageId, 0);
         productName = intent.getStringExtra(EXTRA_productName);
         productPrice = intent.getStringExtra(EXTRA_productPrice);
 
+
         ivProductImage = findViewById(R.id.iv_product_image);
+
         tvProductName = findViewById(R.id.tv_name);
         tvProductPrice = findViewById(R.id.tv_price);
         tvNumberOfItems = findViewById(R.id.tv_number_of_items);
+
         btnMinim = findViewById(R.id.btn_min);
         btnPlus = findViewById(R.id.btn_plus);
         addToCart = findViewById(R.id.btn_add_to_cart);
@@ -89,41 +89,26 @@ public class ItemDetailsActivity extends AppCompatActivity {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                addToCart();
-//                finish();
-                Toast.makeText(ItemDetailsActivity.this, "Add To Cart", Toast.LENGTH_SHORT).show();
+                addToCart();
+                // Toast.makeText(ItemDetailsActivity.this, "Add To Cart", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void addToCart() {
+        //get data form main activity
         Intent intent = getIntent();
-        int imageResource = intent.getIntExtra(EXTRA_imageId, 0);
-        String productName = intent.getStringExtra(EXTRA_productName);
-        String productPrice = intent.getStringExtra(EXTRA_productPrice);
+        imageResource = intent.getIntExtra(EXTRA_imageId, 0);
+        productName = intent.getStringExtra(EXTRA_productName);
+        productPrice = intent.getStringExtra(EXTRA_productPrice);
 
-        Intent data = new Intent();
-        data.putExtra(extra_imageId, imageResource);
-        data.putExtra(extra_productName, productName);
-        data.putExtra(extra_productPrice, productPrice);
+        productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
+        ProductItems product = new ProductItems(imageResource, productName, productPrice);
+        productViewModel.insert(product);
 
-
-        if (productItemsCart == null) {
-            Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
-        } else {
-            productItemsCart.add(new ProductItems(data.getIntExtra("", imageResource), productName, productPrice));
-
-        }
-        int id = getIntent().getIntExtra(extra_id, -1);
-        if (id != -1) {
-            data.putExtra(extra_id, id);
-        }
-        setResult(RESULT_OK, data);
-        Toast.makeText(this, "add to cart", Toast.LENGTH_SHORT).show();
-
-    }
-
-    public void btnAddToCartTest() {
+        Toast.makeText(this, "save successfully", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_OK, intent);
+        finish();
 
     }
 }

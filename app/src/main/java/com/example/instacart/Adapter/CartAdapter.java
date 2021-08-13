@@ -70,6 +70,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
         return mProductItemsList.size();
     }
 
+    public void setProductItem(ArrayList<ProductItems> product) {
+        this.mProductItemsList = product;
+        notifyDataSetChanged();
+    }
+
+    public ProductItems getProductItemAt(int position) {
+        return mProductItemsList.get(position);
+    }
+
     public interface OnProductListener {
         void onProductClick(ProductItems productItems);
     }

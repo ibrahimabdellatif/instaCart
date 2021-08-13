@@ -32,6 +32,9 @@ public class ProductRepository {
         new DeleteProductAsyncTask(itemDao).execute(items);
     }
 
+    public void deleteAllItems() {
+        new DeleteAllProductAsyncTask(itemDao).execute();
+    }
     public LiveData<List<ProductItems>> getAllNotes() {
         return allProduct;
     }
@@ -46,7 +49,6 @@ public class ProductRepository {
 
         @Override
         protected Void doInBackground(ProductItems... product) {
-            //notes with index 0 because it's one notes and start index is zero
             itemDao.insert(product[0]);
             return null;
         }
@@ -61,7 +63,6 @@ public class ProductRepository {
 
         @Override
         protected Void doInBackground(ProductItems... product) {
-            //notes with index 0 because it's one notes and start index is zero
             itemDao.update(product[0]);
             return null;
         }
@@ -76,11 +77,23 @@ public class ProductRepository {
 
         @Override
         protected Void doInBackground(ProductItems... product) {
-            //notes with index 0 because it's one notes and start index is zero
             itemDao.delete(product[0]);
             return null;
         }
     }
 
+    public static class DeleteAllProductAsyncTask extends AsyncTask<Void, Void, Void> {
+        private ItemDao itemDao;
+
+        private DeleteAllProductAsyncTask(ItemDao itemDao) {
+            this.itemDao = itemDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            itemDao.deleteAllItems();
+            return null;
+        }
+    }
 
 }
