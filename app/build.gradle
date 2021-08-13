@@ -29,6 +29,13 @@ android {
 }
 
 dependencies {
+    implementation 'org.jetbrains:annotations:15.0'
+
+
+    //room
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
     //recyclerView
     implementation "androidx.recyclerview:recyclerview:1.2.1"

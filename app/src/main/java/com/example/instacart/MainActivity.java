@@ -2,10 +2,14 @@ package com.example.instacart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,15 +21,22 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_productName = "productName";
     public static final String EXTRA_productPrice = "productPrice";
     public static final String EXTRA_imageId = "imageResource";
+    public static final String EXTRA_counterItem = "counterItem";
 
     private RecyclerView recyclerViewSnacks;
     private RecyclerView recyclerViewFreshProduct;
     private RecyclerView recyclerViewAllCategories;
+    private RecyclerView recyclerViewCart;
+
     private RecyclerView.LayoutManager layoutManager;
     private ProductAdapter adapter;
     private CategoryAdapter categoryAdapter;
+
+    private ItemDetailsActivity itemDetailsActivity;
     private ArrayList<ProductItems> productList = new ArrayList<>();
     private ArrayList<ProductItems> allCategoriesList = new ArrayList<>();
+    private ArrayList<ProductItems> cartList = new ArrayList<>();
+
     private Button btnViewMoreFreshProduct;
     private Button btnViewMoreSnacks;
     private Button btnViewMoreAllCategories;
@@ -34,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         createProductItems();
         createAllCategories();
@@ -67,8 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_productName, productItems.getNameProduct());
                 intent.putExtra(EXTRA_productPrice, productItems.getPriceProduct());
                 intent.putExtra(EXTRA_imageId, productItems.getImageResourceProduct());
+                //intent.putExtra(EXTRA_counterItem , itemDetailsActivity.counterItem);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -97,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_productPrice, productItems.getPriceProduct());
                 intent.putExtra(EXTRA_imageId, productItems.getImageResourceProduct());
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -111,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         });
         recyclerViewSnacks.setAdapter(adapter);
     }
+
 
     public void recyclerViewAllCategories() {
         recyclerViewAllCategories = findViewById(R.id.rv_all_categories);
@@ -147,5 +159,25 @@ public class MainActivity extends AppCompatActivity {
         allCategoriesList.add(new ProductItems(R.drawable.bread, "Bakery"));
     }
 
+    //this method for make save icon menu work and save new items.
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.shopping_cart_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_cart:
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(intent);
+                Toast.makeText(this, "Welcome in cart", Toast.LENGTH_LONG).show();
+                break;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -1,11 +1,10 @@
 package com.example.instacart;
 
+//@Entity (tableName = "product_table")
 public class ProductItems {
-
     private int imageResourceProduct;
     private String nameProduct;
     private String priceProduct;
-
     private int imageResourceAllCategories;
     private String allCategoriesName;
 
