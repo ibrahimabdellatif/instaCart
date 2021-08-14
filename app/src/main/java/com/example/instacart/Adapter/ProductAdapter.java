@@ -60,9 +60,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductItems currentItem = mProductItemsList.get(position);
-        holder.ivProduct.setImageResource(currentItem.getImageResourceProduct());
-        holder.tvProductName.setText(currentItem.getNameProduct());
-        holder.tvProductPrice.setText(currentItem.getPriceProduct());
+        holder.ivProduct.setImageResource(currentItem.getImage());
+        holder.tvProductName.setText(currentItem.getName());
+        holder.tvProductPrice.setText((String.valueOf(currentItem.getPrice())));
     }
 
     @Override

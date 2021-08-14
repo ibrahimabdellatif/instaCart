@@ -32,18 +32,18 @@ public class AllProductActivity extends AppCompatActivity {
 
     public void createProductItems() {
 
-        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", "$16.56"));
-        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", "$15.00"));
-        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", "$23.65"));
-        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", "$20.65"));
-        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", "$16.56"));
-        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", "$15.00"));
-        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", "$23.65"));
-        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", "$20.65"));
-        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", "$16.56"));
-        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", "$15.00"));
-        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", "$23.65"));
-        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", "$20.65"));
+        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", 16.56, 0, 0));
+        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", 15.00, 0, 0));
+        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", 23.65, 0, 0));
+        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", 20.65, 0, 0));
+        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", 16.56, 0, 0));
+        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", 15.00, 0, 0));
+        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", 23.65, 0, 0));
+        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", 20.65, 0, 0));
+        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", 16.56, 0, 0));
+        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", 15.00, 0, 0));
+        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", 23.65, 0, 0));
+        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", 20.65, 0, 0));
     }
 
     public void buildRecyclerView() {
@@ -55,7 +55,7 @@ public class AllProductActivity extends AppCompatActivity {
         adapter.setOnItemClickLister(new ProductAdapter.OnProductListener() {
             @Override
             public void onProductClick(ProductItems productItems) {
-                Toast.makeText(AllProductActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AllProductActivity.this, productItems.getName(), Toast.LENGTH_SHORT).show();
             }
         });
         recyclerView.setAdapter(adapter);

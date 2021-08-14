@@ -22,7 +22,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     private int imageResource;
     private String productName;
-    private String productPrice;
+    private double productPrice;
+    public int counterItem;
     public ProductViewModel productViewModel;
 
     private Button btnPlus;
@@ -32,7 +33,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private TextView tvProductName;
     private TextView tvProductPrice;
     private TextView tvNumberOfItems;
-    public int counterItem;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -49,7 +50,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         imageResource = intent.getIntExtra(EXTRA_imageId, 0);
         productName = intent.getStringExtra(EXTRA_productName);
-        productPrice = intent.getStringExtra(EXTRA_productPrice);
+        productPrice = intent.getDoubleExtra(EXTRA_productPrice, 0);
 
 
         ivProductImage = findViewById(R.id.iv_product_image);
@@ -64,7 +65,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         ivProductImage.setImageResource(imageResource);
         tvProductName.setText(productName);
-        tvProductPrice.setText(productPrice);
+        tvProductPrice.setText(String.valueOf(productPrice));
 
 
         btnMinim.setOnClickListener(new View.OnClickListener() {
@@ -95,15 +96,19 @@ public class ItemDetailsActivity extends AppCompatActivity {
         });
     }
 
+    public int getCounterItem() {
+        return counterItem;
+    }
+
     public void addToCart() {
         //get data form main activity
         Intent intent = getIntent();
         imageResource = intent.getIntExtra(EXTRA_imageId, 0);
         productName = intent.getStringExtra(EXTRA_productName);
-        productPrice = intent.getStringExtra(EXTRA_productPrice);
+        productPrice = intent.getDoubleExtra(EXTRA_productPrice, 0);
 
         productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
-        ProductItems product = new ProductItems(imageResource, productName, productPrice);
+        ProductItems product = new ProductItems(imageResource, productName, productPrice, counterItem, 0);
         productViewModel.insert(product);
 
         Toast.makeText(this, "save successfully", Toast.LENGTH_SHORT).show();

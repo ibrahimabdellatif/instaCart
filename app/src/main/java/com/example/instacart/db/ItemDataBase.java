@@ -53,9 +53,9 @@ public abstract class ItemDataBase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             //this data just for testing
-            itemDao.insert(new ProductItems(R.drawable.apple, "product name1", "product price1"));
-            itemDao.insert(new ProductItems(R.drawable.avocado, "product name2", "product price2"));
-            itemDao.insert(new ProductItems(R.drawable.banana, "product name3", "product price3"));
+            itemDao.insert(new ProductItems(R.drawable.apple, "product name1", 1, 0, 0));
+            itemDao.insert(new ProductItems(R.drawable.avocado, "product name2", 2, 0, 0));
+            itemDao.insert(new ProductItems(R.drawable.banana, "product name3", 3, 0, 0));
             return null;
         }
     }

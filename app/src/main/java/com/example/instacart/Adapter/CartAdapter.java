@@ -24,12 +24,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
         public ImageView ivProduct;
         public TextView tvProductName;
         public TextView tvProductPrice;
+        public TextView tvNumberOfItems;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProduct = itemView.findViewById(R.id.iv_cart);
             tvProductName = itemView.findViewById(R.id.tv_cart_product_name);
             tvProductPrice = itemView.findViewById(R.id.tv_cart_product_price);
+            tvNumberOfItems = itemView.findViewById(R.id.tv_cart_number_of_items);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -60,9 +62,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductItems currentItem = mProductItemsList.get(position);
-        holder.ivProduct.setImageResource(currentItem.getImageResourceProduct());
-        holder.tvProductName.setText(currentItem.getNameProduct());
-        holder.tvProductPrice.setText(currentItem.getPriceProduct());
+        holder.ivProduct.setImageResource(currentItem.getImage());
+        holder.tvProductName.setText(currentItem.getName());
+        holder.tvProductPrice.setText(String.valueOf(currentItem.getPrice()));
+        holder.tvNumberOfItems.setText(String.valueOf(currentItem.getNumberOfProduct()));
     }
 
     @Override

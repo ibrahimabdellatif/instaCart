@@ -58,8 +58,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         ProductItems currentItem = mCategoryItemsList.get(position);
-        holder.ivCategory.setImageResource(currentItem.getImageResourceAllCategory());
-        holder.tvCategoryName.setText(currentItem.getAllCategoryName());
+        holder.ivCategory.setImageResource(currentItem.getImage());
+        holder.tvCategoryName.setText(currentItem.getName());
 
     }
 

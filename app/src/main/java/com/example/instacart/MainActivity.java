@@ -60,10 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void createProductItems() {
 
-        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", "$16.56"));
-        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", "$15.00"));
-        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", "$23.65"));
-        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", "$20.65"));
+        productList.add(new ProductItems(R.drawable.apple, "Organic Apple", 16.56, 0, 0));
+        productList.add(new ProductItems(R.drawable.banana, "Organic Banana(each)", 15.00, 0, 0));
+        productList.add(new ProductItems(R.drawable.avocado, "Organic Hass Avocado", 23.65, 0, 0));
+        productList.add(new ProductItems(R.drawable.strawberrypng, "Juicy Strawberry", 20.65, 0, 0));
+
     }
 
     public void recyclerViewFreshProduct() {
@@ -77,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
             public void onProductClick(ProductItems productItems) {
 
                 Intent intent = new Intent(MainActivity.this, ItemDetailsActivity.class);
-                intent.putExtra(EXTRA_productName, productItems.getNameProduct());
-                intent.putExtra(EXTRA_productPrice, productItems.getPriceProduct());
-                intent.putExtra(EXTRA_imageId, productItems.getImageResourceProduct());
+                intent.putExtra(EXTRA_productName, productItems.getName());
+                intent.putExtra(EXTRA_productPrice, productItems.getPrice());
+                intent.putExtra(EXTRA_imageId, productItems.getImage());
                 //intent.putExtra(EXTRA_counterItem , itemDetailsActivity.counterItem);
                 startActivity(intent);
 //                Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
@@ -107,9 +108,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProductClick(ProductItems productItems) {
                 Intent intent = new Intent(MainActivity.this, ItemDetailsActivity.class);
-                intent.putExtra(EXTRA_productName, productItems.getNameProduct());
-                intent.putExtra(EXTRA_productPrice, productItems.getPriceProduct());
-                intent.putExtra(EXTRA_imageId, productItems.getImageResourceProduct());
+                intent.putExtra(EXTRA_productName, productItems.getName());
+                intent.putExtra(EXTRA_productPrice, productItems.getPrice());
+                intent.putExtra(EXTRA_imageId, productItems.getImage());
                 startActivity(intent);
                 //Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
             }
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         categoryAdapter.setOnItemClickLister(new CategoryAdapter.OnCategoryListener() {
             @Override
             public void onCategoryClick(ProductItems productItems) {
-                Toast.makeText(MainActivity.this, productItems.getAllCategoryName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, productItems.getName(), Toast.LENGTH_SHORT).show();
             }
         });
 

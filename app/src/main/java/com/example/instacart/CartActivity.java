@@ -61,7 +61,7 @@ public class CartActivity extends AppCompatActivity {
         adapter.setOnItemClickLister(new CartAdapter.OnProductListener() {
             @Override
             public void onProductClick(ProductItems productItems) {
-                Toast.makeText(CartActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, productItems.getName(), Toast.LENGTH_SHORT).show();
             }
         });
         recyclerView.setAdapter(adapter);
