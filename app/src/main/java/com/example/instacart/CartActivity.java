@@ -1,6 +1,8 @@
 package com.example.instacart;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +33,6 @@ public class CartActivity extends AppCompatActivity {
     private Button btnCheckout;
     private List<ProductItems> productList = new ArrayList<>();
     private ItemDetailsActivity detailsActivity = new ItemDetailsActivity();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void setBtnCheckout() {
         btnCheckout = findViewById(R.id.btn_checkout);
         btnCheckout.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +80,9 @@ public class CartActivity extends AppCompatActivity {
                 Toast.makeText(CartActivity.this, "checkout is successful", Toast.LENGTH_SHORT).show();
             }
         });
+//
+        btnCheckout.setText("$ " + String.valueOf(detailsActivity.getTotalPriceOfItem()));
+        Log.d("checkout btn", String.valueOf(detailsActivity.getTotalPriceOfItem()));
     }
 
     void swipeToDelete() {
