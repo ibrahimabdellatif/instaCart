@@ -17,7 +17,7 @@ public class ProductViewModel extends AndroidViewModel {
     public ProductViewModel(@NonNull @org.jetbrains.annotations.NotNull Application application) {
         super(application);
         repository = new ProductRepository(application);
-        allProduct = repository.getAllNotes();
+        allProduct = repository.getAllItems();
     }
 
     public void insert(ProductItems items) {
@@ -31,8 +31,13 @@ public class ProductViewModel extends AndroidViewModel {
     public void delete(ProductItems items) {
         repository.delete(items);
     }
-    public void deleteAllProduct(){
+
+    public void deleteAllProduct() {
         repository.deleteAllItems();
+    }
+
+    public LiveData<Double> getTotalPrice() {
+        return repository.getTotalPrice();
     }
 
     public LiveData<List<ProductItems>> getAllProduct() {

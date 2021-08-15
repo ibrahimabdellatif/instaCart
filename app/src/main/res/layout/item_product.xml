@@ -19,8 +19,8 @@
             android:id="@+id/iv_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
             android:elevation="2dp"
+            android:padding="15dp"
             android:scaleType="fitXY"
             android:src="@drawable/banana" />
     </androidx.cardview.widget.CardView>
@@ -29,16 +29,16 @@
         android:id="@+id/tv_product_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Organic Banana (each)"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/cv_product_item"
         app:layout_constraintStart_toStartOf="@id/cv_product_item"
         app:layout_constraintTop_toBottomOf="@id/cv_product_item"
-        android:layout_margin="5dp"
-        android:maxLines="1"
-        android:text="Organic Banana (each)"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="12sp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -46,11 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_product_name"
-        app:layout_constraintStart_toStartOf="@id/tv_product_name"
-        app:layout_constraintTop_toBottomOf="@id/tv_product_name"
         android:text="$15.00"
         android:textColor="#2be01f"
         android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tv_product_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name"
         tools:ignore="MissingConstraints" />
 
 

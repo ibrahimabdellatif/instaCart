@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.InstaCart">
-        <activity android:name=".CartActivity"
+        <activity
+            android:name=".CartActivity"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".ItemDetailsActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ItemDetailsActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AllProductActivity"
             android:parentActivityName=".MainActivity" />

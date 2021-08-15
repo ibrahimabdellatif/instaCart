@@ -43,7 +43,4 @@ public class ProductItems {
         return numberOfProduct;
     }
 
-    public void setNumberOfProduct(int numberOfProduct) {
-        this.numberOfProduct = numberOfProduct;
-    }
 }

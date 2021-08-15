@@ -28,4 +28,7 @@ public interface ItemDao {
     @Query("SELECT * FROM product_table")
     LiveData<List<ProductItems>> getAllProductInCart();
 
+    @Query("SELECT sum(numberOfProduct*price) FROM product_table")
+    LiveData<Double> getTotalPrice();
+
 }

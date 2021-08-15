@@ -35,8 +35,13 @@ public class ProductRepository {
     public void deleteAllItems() {
         new DeleteAllProductAsyncTask(itemDao).execute();
     }
-    public LiveData<List<ProductItems>> getAllNotes() {
+
+    public LiveData<List<ProductItems>> getAllItems() {
         return allProduct;
+    }
+
+    public LiveData<Double> getTotalPrice() {
+        return itemDao.getTotalPrice();
     }
 
     // it takes three parameters
@@ -95,5 +100,6 @@ public class ProductRepository {
             return null;
         }
     }
+
 
 }

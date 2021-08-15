@@ -24,21 +24,17 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_productName = "productName";
     public static final String EXTRA_productPrice = "productPrice";
     public static final String EXTRA_imageId = "imageResource";
-    public static final String EXTRA_counterItem = "counterItem";
 
     private RecyclerView recyclerViewSnacks;
     private RecyclerView recyclerViewFreshProduct;
     private RecyclerView recyclerViewAllCategories;
-    private RecyclerView recyclerViewCart;
 
     private RecyclerView.LayoutManager layoutManager;
     private ProductAdapter adapter;
     private CategoryAdapter categoryAdapter;
 
-    private ItemDetailsActivity itemDetailsActivity;
     private ArrayList<ProductItems> productList = new ArrayList<>();
     private ArrayList<ProductItems> allCategoriesList = new ArrayList<>();
-    private ArrayList<ProductItems> cartList = new ArrayList<>();
 
     private Button btnViewMoreFreshProduct;
     private Button btnViewMoreSnacks;
@@ -81,9 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_productName, productItems.getName());
                 intent.putExtra(EXTRA_productPrice, productItems.getPrice());
                 intent.putExtra(EXTRA_imageId, productItems.getImage());
-                //intent.putExtra(EXTRA_counterItem , itemDetailsActivity.counterItem);
                 startActivity(intent);
-//                Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -112,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_productPrice, productItems.getPrice());
                 intent.putExtra(EXTRA_imageId, productItems.getImage());
                 startActivity(intent);
-                //Toast.makeText(MainActivity.this, productItems.getNameProduct(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -64,8 +64,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
         ProductItems currentItem = mProductItemsList.get(position);
         holder.ivProduct.setImageResource(currentItem.getImage());
         holder.tvProductName.setText(currentItem.getName());
-        holder.tvProductPrice.setText("$"+String.valueOf(currentItem.getPrice()));
-        holder.tvNumberOfItems.setText(String.valueOf(currentItem.getNumberOfProduct()));
+        holder.tvProductPrice.setText("$" + String.valueOf(currentItem.getPrice()));
+        holder.tvNumberOfItems.setText("x " + String.valueOf(currentItem.getNumberOfProduct()));
     }
 
     @Override

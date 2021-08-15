@@ -25,7 +25,7 @@ public class AllProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_product);
         createProductItems();
         buildRecyclerView();
-        setTitle("All Items");
+        //setTitle("All Items");
 
 
     }

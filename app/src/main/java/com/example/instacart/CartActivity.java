@@ -1,8 +1,6 @@
 package com.example.instacart;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,6 +31,7 @@ public class CartActivity extends AppCompatActivity {
     private Button btnCheckout;
     private List<ProductItems> productList = new ArrayList<>();
     private ItemDetailsActivity detailsActivity = new ItemDetailsActivity();
+    private double total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +43,24 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<ProductItems> productItems) {
                 adapter.setProductItem((ArrayList<ProductItems>) productItems);
+
             }
         });
 
+        detailsActivity.productViewModel.getTotalPrice().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                if (aDouble == null) {
+                    aDouble = 0.0;
+                }
+                total = Math.round(aDouble);
+                btnCheckout.setText("Total $" + total);
+
+            }
+        });
+        setTitle("Cart");
         setRecyclerView();
+        swipeToDelete();
         setBtnCheckout();
 
     }
@@ -65,24 +78,20 @@ public class CartActivity extends AppCompatActivity {
                 Toast.makeText(CartActivity.this, productItems.getName(), Toast.LENGTH_SHORT).show();
             }
         });
+
         recyclerView.setAdapter(adapter);
-
-
     }
 
 
-    @SuppressLint("SetTextI18n")
     private void setBtnCheckout() {
         btnCheckout = findViewById(R.id.btn_checkout);
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(CartActivity.this, "checkout is successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, "Successfully CheckOut", Toast.LENGTH_SHORT).show();
             }
         });
-//
-        btnCheckout.setText("$ " + String.valueOf(detailsActivity.getTotalPriceOfItem()));
-        Log.d("checkout btn", String.valueOf(detailsActivity.getTotalPriceOfItem()));
+
     }
 
     void swipeToDelete() {
