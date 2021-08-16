@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     android:orientation="vertical"
+    android:background="#ebe8df"
     tools:context=".AllProductActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Popular Items"
+        android:text="Popular Products"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <GridLayout

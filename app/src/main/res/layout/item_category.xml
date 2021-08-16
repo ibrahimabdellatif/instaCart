@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="14dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="1dp">
 
         <RelativeLayout
@@ -18,7 +18,7 @@
 
             <ImageView
                 android:id="@+id/iv_category"
-                android:layout_width="55dp"
+                android:layout_width="75dp"
                 android:layout_height="55dp"
                 android:padding="9dp"
                 android:scaleType="fitXY"
