@@ -1,5 +1,7 @@
 package com.example.instacart;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -115,9 +117,26 @@ public class CartActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapter.notifyItemChanged(viewHolder.getAdapterPosition());
-                detailsActivity.productViewModel.delete(adapter.getProductItemAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(CartActivity.this, "Product is Deleted", Toast.LENGTH_SHORT).show();
+                //adding AlertDialog before deleted any items in cart
+                new AlertDialog.Builder(viewHolder.itemView.getContext())
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                int position = viewHolder.getPosition();
+                                adapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                                detailsActivity.productViewModel.delete(adapter.getProductItemAt(viewHolder.getAdapterPosition()));
+                                Toast.makeText(CartActivity.this, "Product is Deleted", Toast.LENGTH_SHORT).show();
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        adapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                        dialogInterface.cancel();
+                        Toast.makeText(CartActivity.this, "Nothing is changed", Toast.LENGTH_SHORT).show();
+                    }
+                }).create().show();
+
             }
         }).attachToRecyclerView(recyclerView);
     }
@@ -133,8 +152,22 @@ public class CartActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_all_product_menu:
-                detailsActivity.productViewModel.deleteAllProduct();
-                Toast.makeText(this, "cart be empty", Toast.LENGTH_SHORT).show();
+                //add AlertDialog message before delete all items
+                new AlertDialog.Builder(this)
+                        .setMessage("Are you sure to delete all items form cart?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                detailsActivity.productViewModel.deleteAllProduct();
+                                Toast.makeText(CartActivity.this, "cart is empty", Toast.LENGTH_SHORT).show();
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                        Toast.makeText(CartActivity.this, "Nothing is changed", Toast.LENGTH_SHORT).show();
+                    }
+                }).create().show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

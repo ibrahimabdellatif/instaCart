@@ -93,7 +93,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Add To Cart"
+        android:background="@drawable/checkoutbtn"
         android:textColor="@color/black"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints" />
 

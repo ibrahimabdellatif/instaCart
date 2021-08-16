@@ -17,7 +17,6 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_checkout"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="6dp"
         tools:listitem="@layout/cart_item" />
 
 
@@ -26,9 +25,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="check out"
+        android:background="@drawable/checkoutbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
+
         tools:ignore="MissingConstraints" />
 
     <TextView
