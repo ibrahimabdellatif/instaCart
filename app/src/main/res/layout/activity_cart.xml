@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".CartActivity">
 
 
@@ -16,6 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_checkout"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="6dp"
         tools:listitem="@layout/cart_item" />
 
 
@@ -27,6 +29,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_empty_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="this cart is empty please check the products"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_cart"
+        app:layout_constraintEnd_toEndOf="@+id/rv_cart"
+        app:layout_constraintStart_toStartOf="@+id/rv_cart"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
 

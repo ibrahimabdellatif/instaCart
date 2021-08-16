@@ -1,11 +1,13 @@
 package com.example.instacart;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private CartAdapter adapter;
+    private TextView tvEmptyCart;
     private Button btnCheckout;
     private List<ProductItems> productList = new ArrayList<>();
     private ItemDetailsActivity detailsActivity = new ItemDetailsActivity();
@@ -43,7 +46,12 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<ProductItems> productItems) {
                 adapter.setProductItem((ArrayList<ProductItems>) productItems);
-
+                if (productItems.size() == 0) {
+                    tvEmptyCart.setVisibility(View.VISIBLE);
+                } else {
+                    tvEmptyCart.setVisibility(View.GONE);
+                }
+                Log.d("recycler view cart", String.valueOf(productItems.size()));
             }
         });
 
@@ -58,6 +66,8 @@ public class CartActivity extends AppCompatActivity {
 
             }
         });
+        tvEmptyCart = findViewById(R.id.tv_empty_cart);
+
         setTitle("Cart");
         setRecyclerView();
         swipeToDelete();
@@ -72,6 +82,7 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new CartAdapter((ArrayList<ProductItems>) productList);
+
         adapter.setOnItemClickLister(new CartAdapter.OnProductListener() {
             @Override
             public void onProductClick(ProductItems productItems) {

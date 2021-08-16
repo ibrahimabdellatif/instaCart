@@ -10,7 +10,6 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.instacart.ProductItems;
-import com.example.instacart.R;
 
 @Database(entities = {ProductItems.class}, version = 1)
 public abstract class ItemDataBase extends RoomDatabase {
@@ -53,9 +52,9 @@ public abstract class ItemDataBase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             //this data just for testing
-            itemDao.insert(new ProductItems(R.drawable.apple, "product name1", 1, 0, 0));
-            itemDao.insert(new ProductItems(R.drawable.avocado, "product name2", 2, 0, 0));
-            itemDao.insert(new ProductItems(R.drawable.banana, "product name3", 3, 0, 0));
+//            itemDao.insert(new ProductItems(R.drawable.apple, "product name1", 1, 0, 0));
+//            itemDao.insert(new ProductItems(R.drawable.avocado, "product name2", 2, 0, 0));
+//            itemDao.insert(new ProductItems(R.drawable.banana, "product name3", 3, 0, 0));
             return null;
         }
     }
